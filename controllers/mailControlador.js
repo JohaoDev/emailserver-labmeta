@@ -3,7 +3,7 @@ const nodemailer = require("nodemailer"),
 
 const gerencia = (req, res) => {
   let { data } = req.body,
-    html = require("./bodiesEmails/ads");
+    example = require("./bodiesEmails/example")
 
   const transporter = nodemailer.createTransport(
     smtpTransport({
@@ -23,12 +23,12 @@ const gerencia = (req, res) => {
     from: `Gerencia - Labmeta S.A. <${process.env.EMAIL_USER}>`,
     to: data.email,
     subject: "Nuevo Mensaje",
-    html,
+    html: example,
     attachments: [
       {
-        filename: "user.jpg",
-        path: __dirname + "/assets/user.jpg",
-        cid: "1",
+        filename: "example.jpg",
+        path: __dirname + "/assets/example.jpg",
+        cid: "example",
       },
     ],
   };

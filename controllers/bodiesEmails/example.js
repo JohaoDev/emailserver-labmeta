@@ -1,3 +1,4 @@
+module.exports = `
 <!DOCTYPE html>
 <html
   lang="en"
@@ -7,13 +8,9 @@
 >
   <head>
     <meta charset="utf-8" />
-    <!-- utf-8 works for most cases -->
     <meta name="viewport" content="width=device-width" />
-    <!-- Forcing initial-scale shouldn't be necessary -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <!-- Use the latest (edge) version of IE rendering engine -->
     <meta name="x-apple-disable-message-reformatting" />
-    <!-- Disable auto-scale in iOS 10 Mail entirely -->
     <title></title>
     <!-- The title tag shows in email notifications, like Android 4.4. -->
 
@@ -22,10 +19,7 @@
       rel="stylesheet"
     />
 
-    <!-- CSS Reset : BEGIN -->
     <style>
-      /* What it does: Remove spaces around the email design added by some email clients. */
-      /* Beware: It can remove the padding / margin and add a background color to the compose a reply window. */
       html,
       body {
         margin: 0 auto !important;
@@ -35,21 +29,17 @@
         background: #f1f1f1;
       }
 
-      /* What it does: Stops email clients resizing small text. */
       * {
         -ms-text-size-adjust: 100%;
         -webkit-text-size-adjust: 100%;
       }
 
-      /* What it does: Centers email on Android 4.4 */
       div[style*="margin: 16px 0"] {
         margin: 0 !important;
       }
 
-      /* What it does: Stops Outlook from adding extra spacing to tables. */
       table,
 
-      /* What it does: Fixes webkit padding issue. */
       table {
         border-spacing: 0 !important;
         border-collapse: collapse !important;
@@ -57,7 +47,6 @@
         margin: 0 auto !important;
       }
 
-      /* What it does: Uses a better rendering method when resizing images in IE. */
       img {
         -ms-interpolation-mode: bicubic;
       }
@@ -446,7 +435,7 @@
                           <tr>
                             <td>
                               <img
-                                src="./assets/1.jpeg"
+                                src="cid:example"
                                 alt=""
                                 style="
                                   width: 100%;
@@ -496,3 +485,4 @@
     <!-- </center> -->
   </body>
 </html>
+`;
