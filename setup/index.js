@@ -1,9 +1,18 @@
 const env = require("dotenv").config(),
   app = require("./app"),
-  port = process.env.PORT || 5001;
+  port = process.env.PORT || 5001,
+  fs = require("fs"),
+  httpsOptions = {
+    key: fs.readFileSync("./security/cert.key"),
+    cert: fs.readFileSync("./security/cert.pem"),
+    // requestCert: false,
+    // rejectUnauthorized: false,
+  };
 
-app.listen(port, (err) => {
+let https = require("https").Server(httpsOptions, app);
+
+https.listen(port, (err) => {
   !err
-    ? console.log(`The server is running on http://localhost:${port}/`)
+    ? console.log(`The server is running on https://localhost:${port}/`)
     : console.log(`The server is not working`);
 });

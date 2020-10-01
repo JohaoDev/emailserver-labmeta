@@ -28,7 +28,7 @@ prompt APPLICATION 100 - Pruebas
 -- Application Export:
 --   Application:     100
 --   Name:            Pruebas
---   Date and Time:   10:43 Thursday October 1, 2020
+--   Date and Time:   11:56 Thursday October 1, 2020
 --   Exported By:     JOHAO
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -114,7 +114,7 @@ wwv_flow_api.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>'Pruebas'
 ,p_last_updated_by=>'JOHAO'
-,p_last_upd_yyyymmddhh24miss=>'20201001103918'
+,p_last_upd_yyyymmddhh24miss=>'20201001115531'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>3
 ,p_ui_type_name => null
@@ -10781,7 +10781,7 @@ wwv_flow_api.create_page(
 '<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">'))
 ,p_javascript_code=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'function sendEmail() {',
-'    const url = "http://localhost:5000/send-email",',
+'    const url = "https://localhost:5000/send-email",',
 '          emailBody = {',
 '              data: {',
 unistr('                  email: prompt("Ingrese su correo electr\00F3nico"),'),
@@ -10801,7 +10801,7 @@ unistr('                  email: prompt("Ingrese su correo electr\00F3nico"),'),
 '}'))
 ,p_page_template_options=>'#DEFAULT#'
 ,p_last_updated_by=>'JOHAO'
-,p_last_upd_yyyymmddhh24miss=>'20201001103735'
+,p_last_upd_yyyymmddhh24miss=>'20201001115531'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(4435415223872701)
@@ -10830,7 +10830,7 @@ wwv_flow_api.create_page_plug(
 '        <p class="pt-12">',
 unistr('            Se desarrollo un servidor express al cual se implemento un m\00F3dulo de envio de correo electr\00F3nico llamado Nodemailer. <br><br>'),
 '',
-unistr('            Endpoint de conexi\00F3n: http://localhost:5000/send-email <br><br>'),
+unistr('            Endpoint de conexi\00F3n: https://localhost:5000/send-email <br><br>'),
 '',
 '            <h1>Pasos para levantar servidor express.</h1>',
 '            1. Descargar servidor del siguiente enlace:',
