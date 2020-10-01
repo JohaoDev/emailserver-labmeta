@@ -3,7 +3,7 @@ const express = require("express"),
   cors = require("cors");
 
 let app = express(),
-  mail = require("../controllers/mailControlador");
+  email = require("../controllers/emailControlador");
 
 app.use(
   bodyParser.urlencoded({
@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 //Routes
-app.get("/", (req, res) => res.send("Welcome"));
-app.post("/send_mail", mail.gerencia);
+app.get("/", (req, res) => res.send("Welcome Email Server - Labmeta S.A."));
+app.post("/send-email", email.gerencia);
 
 module.exports = app;
