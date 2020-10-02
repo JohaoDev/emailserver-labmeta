@@ -15,7 +15,7 @@ begin
 wwv_flow_api.import_begin (
  p_version_yyyy_mm_dd=>'2020.03.31'
 ,p_release=>'20.1.0.00.13'
-,p_default_workspace_id=>1301688811807883
+,p_default_workspace_id=>1401630013238866
 ,p_default_application_id=>100
 ,p_default_id_offset=>0
 ,p_default_owner=>'LABMETA'
@@ -23,12 +23,12 @@ wwv_flow_api.import_begin (
 end;
 /
  
-prompt APPLICATION 100 - Pruebas
+prompt APPLICATION 100 - Send Email
 --
 -- Application Export:
 --   Application:     100
---   Name:            Pruebas
---   Date and Time:   11:56 Thursday October 1, 2020
+--   Name:            Send Email
+--   Date and Time:   08:16 Friday October 2, 2020
 --   Exported By:     JOHAO
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -66,7 +66,7 @@ prompt APPLICATION 100 - Pruebas
 --       E-Mail:
 --     Supporting Objects:  Included
 --   Version:         20.1.0.00.13
---   Instance ID:     197674895507676
+--   Instance ID:     300190933135051
 --
 
 prompt --application/delete_application
@@ -79,8 +79,8 @@ begin
 wwv_flow_api.create_flow(
  p_id=>wwv_flow.g_flow_id
 ,p_owner=>nvl(wwv_flow_application_install.get_schema,'LABMETA')
-,p_name=>nvl(wwv_flow_application_install.get_application_name,'Pruebas')
-,p_alias=>nvl(wwv_flow_application_install.get_application_alias,'PRUEBAS')
+,p_name=>nvl(wwv_flow_application_install.get_application_name,'Send Email')
+,p_alias=>nvl(wwv_flow_application_install.get_application_alias,'SEND-EMAIL')
 ,p_page_view_logging=>'YES'
 ,p_page_protection_enabled_y_n=>'Y'
 ,p_checksum_salt=>'3CAC7C3E5454D90EB43C384EF96AE85D72DAEEB006B9F9778CE32EDD095BAC32'
@@ -99,12 +99,14 @@ wwv_flow_api.create_flow(
 ,p_authentication_id=>wwv_flow_api.id(4282404231827013)
 ,p_application_tab_set=>1
 ,p_logo_type=>'T'
-,p_logo_text=>'Pruebas'
+,p_logo_text=>'Send Email'
 ,p_app_builder_icon_name=>'app-icon.svg'
+,p_public_user=>'APEX_PUBLIC_USER'
 ,p_proxy_server=>nvl(wwv_flow_application_install.get_proxy,'')
 ,p_no_proxy_domains=>nvl(wwv_flow_application_install.get_no_proxy_domains,'')
 ,p_flow_version=>'Release 1.0'
 ,p_flow_status=>'AVAILABLE_W_EDIT_LINK'
+,p_flow_unavailable_text=>'This application is currently unavailable at this time.'
 ,p_exact_substitutions_only=>'Y'
 ,p_browser_cache=>'N'
 ,p_browser_frame=>'D'
@@ -112,9 +114,9 @@ wwv_flow_api.create_flow(
 ,p_csv_encoding=>'Y'
 ,p_auto_time_zone=>'N'
 ,p_substitution_string_01=>'APP_NAME'
-,p_substitution_value_01=>'Pruebas'
+,p_substitution_value_01=>'Send Email'
 ,p_last_updated_by=>'JOHAO'
-,p_last_upd_yyyymmddhh24miss=>'20201001115531'
+,p_last_upd_yyyymmddhh24miss=>'20201002081549'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>3
 ,p_ui_type_name => null
@@ -10703,12 +10705,11 @@ wwv_flow_api.create_user_interface(
 ,p_home_url=>'f?p=&APP_ID.:1:&SESSION.'
 ,p_login_url=>'f?p=&APP_ID.:LOGIN:&APP_SESSION.::&DEBUG.:::'
 ,p_theme_style_by_user_pref=>false
-,p_built_with_love=>false
 ,p_global_page_id=>0
 ,p_navigation_list_id=>wwv_flow_api.id(4283266990827018)
 ,p_navigation_list_position=>'SIDE'
 ,p_navigation_list_template_id=>wwv_flow_api.id(4388475127827211)
-,p_nav_list_template_options=>'#DEFAULT#:t-TreeNav--styleA:js-navCollapsed--hidden'
+,p_nav_list_template_options=>'#DEFAULT#:js-defaultCollapsed:js-navCollapsed--hidden:t-TreeNav--styleA'
 ,p_css_file_urls=>'#APP_IMAGES#app-icon.css?version=#APP_VERSION#'
 ,p_nav_bar_type=>'LIST'
 ,p_nav_bar_list_id=>wwv_flow_api.id(4420915217827291)
@@ -10744,11 +10745,11 @@ wwv_flow_api.create_page(
 ,p_user_interface_id=>wwv_flow_api.id(4421244819827293)
 ,p_name=>'Home'
 ,p_alias=>'HOME'
-,p_step_title=>'Pruebas'
+,p_step_title=>'Home'
 ,p_autocomplete_on_off=>'OFF'
 ,p_page_template_options=>'#DEFAULT#'
 ,p_last_updated_by=>'JOHAO'
-,p_last_upd_yyyymmddhh24miss=>'20201001103918'
+,p_last_upd_yyyymmddhh24miss=>'20201002081443'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(4432089205827443)
