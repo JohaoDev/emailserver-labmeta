@@ -1,45 +1,34 @@
-const nodemailer = require("nodemailer"),
-  smtpTransport = require("nodemailer-smtp-transport");
+const loadTemplate = require("./templates/template");
+const nodemailer = require("nodemailer");
 
-const gerencia = (req, res) => {
-  let { data } = req.body,
-    example = require("./bodiesEmails/example")
+const gerencia = async (req, res) => {
+  const { emailTo, subject, message } = req.body;
 
-  const transporter = nodemailer.createTransport(
-    smtpTransport({
-      port: 587,
-      host: "us2.smtp.mailhostbox.com",
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-      secure: false,
-      requireTLS: true,
-      ignoreTLS: true,
-    })
-  );
+  const transporter = nodemailer.createTransport({
+    port: 587,
+    host: "us2.smtp.mailhostbox.com",
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
+    },
+    secure: false,
+    requireTLS: true,
+    ignoreTLS: true,
+  });
 
   let mailOptions = {
     from: `Gerencia - Labmeta S.A. <${process.env.EMAIL_USER}>`,
-    to: data.email,
-    subject: "Nuevo Mensaje",
-    html: example,
+    to: emailTo,
+    subject: subject,
+    // text: message,
+    html: await loadTemplate({ message }),
     attachments: [
       {
-        filename: "example.jpg",
-        path: __dirname + "/assets/example.jpg",
-        cid: "example",
+        filename: "attachment.png",
+        path: __dirname + "/assets/attachment.png",
       },
     ],
   };
-
-  transporter.verify((error, success) => {
-    if (error) {
-      console.error(error);
-    } else {
-      console.log("Server is ready to send messages");
-    }
-  });
 
   transporter.sendMail(mailOptions, (err, data) => {
     if (err) {
@@ -50,7 +39,7 @@ const gerencia = (req, res) => {
     } else {
       return res.status(200).json({
         ok: true,
-        msm: "Email OK",
+        msm: "Email sent",
       });
     }
   });

@@ -2,8 +2,9 @@ function sendEmail () {
     const url = 'http://localhost:5000/send_mail',
           user_data = {
               "data": {
-                  "email": prompt("Ingrese correo electrónico"),
-                  "content": "Email Test - Oracle APEX 20.1"
+                    "emailTo": "perlazajohao@gmail.com",
+                    "subject": "Nodemailer server",
+                    "message": "Message example"
               }
           }
     
